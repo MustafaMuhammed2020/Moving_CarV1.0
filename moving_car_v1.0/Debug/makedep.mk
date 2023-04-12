@@ -2,7 +2,11 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
+APP\app.c
+
 HAL\led\LED_program.c
+
+HAL\motor\motor_program.c
 
 main.c
 

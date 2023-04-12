@@ -1,18 +1,15 @@
-/*
- * moving_car_v1.0.c
- *
- * Created: 4/12/2023 3:53:23 PM
- * Author : KOSHMAR
- */ 
 
-#include <avr/io.h>
 
+#include "APP/APP.h"
 
 int main(void)
 {
+	APP_init();
+	
     /* Replace with your application code */
     while (1) 
     {
+		APP_start();
     }
 }
 

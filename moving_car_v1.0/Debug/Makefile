@@ -52,6 +52,7 @@ SUBDIRS :=  \
 ../Debug/MCAL/timer0/ \
 ../Debug/SERVICE/ \
 ../HAL/led \
+../HAL/motor \
 ../MCAL \
 ../MCAL/dio \
 ../MCAL/interrupt \
@@ -64,7 +65,9 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../APP/app.c \
 ../HAL/led/LED_program.c \
+../HAL/motor/motor_program.c \
 ../main.c \
 ../MCAL/dio/DIO_program.c \
 ../MCAL/interrupt/INT_program.c \
@@ -79,7 +82,9 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+APP/app.o \
 HAL/led/LED_program.o \
+HAL/motor/motor_program.o \
 main.o \
 MCAL/dio/DIO_program.o \
 MCAL/interrupt/INT_program.o \
@@ -87,7 +92,9 @@ MCAL/timer0/TMR0_program.o \
 MCAL/timer1/timer1_program.o
 
 OBJS_AS_ARGS +=  \
+APP/app.o \
 HAL/led/LED_program.o \
+HAL/motor/motor_program.o \
 main.o \
 MCAL/dio/DIO_program.o \
 MCAL/interrupt/INT_program.o \
@@ -95,7 +102,9 @@ MCAL/timer0/TMR0_program.o \
 MCAL/timer1/timer1_program.o
 
 C_DEPS +=  \
+APP/app.d \
 HAL/led/LED_program.d \
+HAL/motor/motor_program.d \
 main.d \
 MCAL/dio/DIO_program.d \
 MCAL/interrupt/INT_program.d \
@@ -103,7 +112,9 @@ MCAL/timer0/TMR0_program.d \
 MCAL/timer1/timer1_program.d
 
 C_DEPS_AS_ARGS +=  \
+APP/app.d \
 HAL/led/LED_program.d \
+HAL/motor/motor_program.d \
 main.d \
 MCAL/dio/DIO_program.d \
 MCAL/interrupt/INT_program.d \
@@ -124,7 +135,21 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+APP/app.o: ../APP/app.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../SERVICE" -I"../MCAL" -I"../HAL" -I"../HAL/led" -I"../MCAL/interrupt" -I"../MCAL/timer0"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 HAL/led/LED_program.o: ../HAL/led/LED_program.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../SERVICE" -I"../MCAL" -I"../HAL" -I"../HAL/led" -I"../MCAL/interrupt" -I"../MCAL/timer0"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+HAL/motor/motor_program.o: ../HAL/motor/motor_program.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include" -I"../SERVICE" -I"../MCAL" -I"../HAL" -I"../HAL/led" -I"../MCAL/interrupt" -I"../MCAL/timer0"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
