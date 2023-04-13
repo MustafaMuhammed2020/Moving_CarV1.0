@@ -9,6 +9,7 @@
 #include "../SERVICE/common_macros.h"
 #include "../SERVICE/standard_types.h"
 
+#include <avr/interrupt.h>
 
 /** INCLUDE HAL DRIVERS **/
 #include "../MCAL/dio/DIO_interface.h"
@@ -19,13 +20,18 @@
 #include "../../MCAL/timer1/timer1_config.h"
 #include "../HAL/motor/motor_config.h"
 #include "../../MCAL/timer0/TMR0_config.h"
+
 /** INCLUDE DRIVER FILES **/
 #include "APP.h"
+
+static uint32_t u32_a_delayovs = 0 ;  /** VARIABLE TO HLD THE NUMBER OF NEEDED OVERFLOWS FOR SPECIFIC DELAY **/
 
 
 
 void APP_init(void)
 {
+	
+	
 	TMR0_init();  /** INITIALIZE TIMER 0 **/
 	
 	TMR1_init();  /** INITIALIZE TIMER 1 **/
@@ -49,19 +55,21 @@ void APP_init(void)
 void APP_start(void)
 {
    
-     
+   
+   u32_a_delayovs = TMR1_getovs(3000);
+	
+	TMR1_start();
+	
+	while (u32_a_delayovs)
+	{
+	   MOTOR_applyspeed(MOTOR1_ID , speed_mode_2); 
+	}
 		
-	MOTOR_applyspeed(MOTOR1_ID , speed_mode_2);
-	
-	//MOTOR_applyspeed(MOTOR2_ID , speed_mode_1);
-	
-// 	TMR1_setdelayms(4000);
-// 	
-// 	MOTOR_applyspeed(MOTOR1_ID , speed_mode_1);
-// 	
-// 	TMR1_setdelayms(4000);
-// 	
+	TMR1_stop();
+		
+}
 
-
-	
+ISR(TIMER1_OVF_vect)
+{
+	u32_a_delayovs-- ; 
 }

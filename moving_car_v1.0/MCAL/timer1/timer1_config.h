@@ -39,11 +39,11 @@
 /**                      10 - PWM_ADAPTED_TOP                        **/
 /**                      11 - PHASE_CORRECT_UNITA_INVERTING_MODE     **/
 /**                      12 - PHASE_CORRECT_UNITB_INVERTING_MODE     **/
-/**                     14 - PHASE_CORRECT_UNITA_NON_INVERTING_MODE  **/
-/**                      15 - PHASE_CORRECT_UNITB_NON_INVERTING_MODE **/
-/**                      16 - PHASE_CORRECT_8BIT_MODE                **/
-/**                      17 - PHASE_CORRECT_9BIT_MODE                **/
-/**                      18 - PHASE_CORRECT_10BIT_MODE               **/
+/**                      13 - PHASE_CORRECT_UNITA_NON_INVERTING_MODE **/
+/**                      14 - PHASE_CORRECT_UNITB_NON_INVERTING_MODE **/
+/**                      15 - PHASE_CORRECT_8BIT_MODE                **/
+/**                      16 - PHASE_CORRECT_9BIT_MODE                **/
+/**                      17 - PHASE_CORRECT_10BIT_MODE               **/
 /**********************************************************************/
 #define TMR1_MODE              NORMAL_MODE 
 

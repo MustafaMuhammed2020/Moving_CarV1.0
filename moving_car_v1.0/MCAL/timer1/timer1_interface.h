@@ -102,5 +102,13 @@ TMR1_delay_status TMR1_setdelayms(uint32_t DELAY_MS);
 TMR1_stop_status TMR1_stop(void);
 
 
+/******************************************************************************/
+/** FUNCTION TO CALCULATE THE NUMBER OF NEEDED OVERFLOWS                     **/
+/** ARGUMENTS  : DELAY IN MS                                                 **/
+/** RETURN     : RETURNS THE NUMBER OF OVS                                   **/
+/******************************************************************************/
+uint32_t TMR1_getovs(uint32_t u32_a_delay);
+
+
 
 #endif /* TMR1_H_ */
