@@ -1,5 +1,5 @@
 /**************************************************/
-/* Author  : Mustafa Mohammed Abdou               */
+/* Author  : Team2               */
 /* Date    : 4 April , 2023                       */
 /* Version : V01                                  */
 /* Hint    : configuration file of led            */
