@@ -220,10 +220,25 @@
     <Compile Include="MCAL\timer1\timer1_program.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="MCAL\timer2\timer2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="MCAL\timer2\timer2.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\bit_manipulation.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="SERVICE\common_macros.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SERVICE\registers.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="SERVICE\standard_types.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SERVICE\types.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>
@@ -255,6 +270,7 @@
     <Folder Include="MCAL\timer1" />
     <Folder Include="MCAL\timer0" />
     <Folder Include="APP" />
+    <Folder Include="MCAL\timer2\" />
     <Folder Include="SERVICE\" />
   </ItemGroup>
   <ItemGroup>

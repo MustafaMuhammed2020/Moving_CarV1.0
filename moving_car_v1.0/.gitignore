@@ -1,0 +1,8 @@
+*.cproj
+*.pptx
+/Debug
+*.xml
+/Proteus/*.pdsbak
+/Proteus/*.pdsprj.*
+.vs
+.vscode

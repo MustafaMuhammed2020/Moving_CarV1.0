@@ -18,3 +18,5 @@ MCAL\timer0\TMR0_program.c
 
 MCAL\timer1\timer1_program.c
 
+MCAL\timer2\timer2.c
+

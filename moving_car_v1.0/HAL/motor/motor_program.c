@@ -143,7 +143,7 @@ MOTOR_init_status MOTOR_turnoff(uint8_t u8_a_motorid)
 		case MOTOR1_ID : /** SET PINS OF MOTOR 1 **/
 		
 		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_LOW); /** THE TWO PINS ARE HIGH **/
-		//DIO_SETPINVAL(MOTOR1_PORT , MOTOR1_PIN2 , DIO_PIN_HIGH);
+		//DIO_setpinvalue(MOTOR2_PORT , MOTOR2_ENABLE_PIN , DIO_PIN_LOW);
 		break;
 		
 		case MOTOR2_ID:  /** SET PINS OF MOTOR 2 **/
