@@ -111,21 +111,18 @@ err_state TIMER0_delay(float f_a_delayInMillis)
     //variable initialization
     unsigned int u16_l_numberOfOVF;
     unsigned int u16_l_count = 0;
-    
+    TIMER0_normalMode();
     //get no of overflows needed to achieve the required delay
     u16_l_numberOfOVF = TIMER0_getInitialValue(f_a_delayInMillis);
-    
+    TCNT0 = u16_gs_t0_initial_value; //Add intial value to timer 0 counter register   
     //Sets the prescaler mode to the mode chosen by the user (defined as a global variable in the timers.h file)
-
+	TIMER0_prescalerMode(PRESCALER_MODE);//Start Timer 0
     
     //keep looping until achieving the number of overflows required
     while(u16_l_count<u16_l_numberOfOVF)	
     {	
         //busy loop until the timer interrupt flag is up
-        TCNT0 = u16_gs_t0_initial_value;
-        TIMER0_prescalerMode(PRESCALER_MODE);
-        while( (TIFR & (1<<0) ) ==0 );
-        TCCR0 = 0;		
+        while( (TIFR & (1<<0) ) ==0 );	
         Set_Bit(0,TIFR);
         //clear flag
         u16_l_count++;
@@ -259,20 +256,19 @@ err_state TIMER2_delay(float f_a_delayInMillis)
     //variable initialization
     unsigned int u16_l_numberOfOVF;
     unsigned int u16_l_count = 0;
-
+	TIMER2_normalMode();
     //get no of overflows needed to achieve the required delay
     u16_l_numberOfOVF = TIMER2_getInitialValue(f_a_delayInMillis);
-
+    TCNT2 = u16_gs_t2_initial_value; // add initial value to Timer 2 counter register
+    TIMER2_perscalerMode(PRESCALER_MODE);//Start Timer 2
     //keep looping until achieving the number of overflows required
     while(u16_l_count<u16_l_numberOfOVF)
     {
         //busy loop until the timer interrupt flag is up
-        TCNT2 = u16_gs_t2_initial_value;
-        TIMER2_perscalerMode(PRESCALER_MODE);
         while( (TIFR & (1<<6) ) ==0 );
-        TCCR2 = 0;
-        Set_Bit(6,TIFR);
-        //clear flag
+        
+		//clear flag
+		Set_Bit(6,TIFR);
         u16_l_count++;
     }
     //close the timer
