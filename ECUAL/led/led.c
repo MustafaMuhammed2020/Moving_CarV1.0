@@ -2,7 +2,7 @@
  * led.c
  *
  * Created: 4/5/2023 6:22:55 PM
- *  Author: Team2
+ *  Author: Team 2
  */ 
 
 #include "led.h"

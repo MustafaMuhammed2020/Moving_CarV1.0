@@ -2,7 +2,7 @@
  * moving_car.c
  *
  * Created: 4/6/2023 5:10:42 PM
- *  Author: Team2
+ *  Author: Team 2
  */ 
 #include "moving_car.h"
 
@@ -153,16 +153,17 @@ ISR(TIMER2_OVF)
 //ISR for external interrupt 0 on PD2 which sets the u8_gs_start flag
 ISR(EXT_INT_0)
 {
-    u8_gs_start = 1;
-    u8_gs_stop = 0;
+    u8_gs_start = 1; //Set Start flag on
+    u8_gs_stop = 0; //Set Stop flag off
 }
 
 //ISR for external interrupt 1 on PD3 sets the emergency u8_gs_stop flag and keep motors off until u8_gs_start button is pushed again 
 ISR(EXT_INT_1)
 {
-    SREG |= (1<<7);//enabling the global interrupt to check if u8_gs_start is pushed again
-    u8_gs_stop = 1;
-    u8_gs_start = 0;
+    SREG |= (1<<7);//enabling the global interrupt(because global interrupt is automatically turned off whenever ISR is entered) to check if u8_gs_start is pushed again
+    u8_gs_stop = 1; //Set Stop flag on
+    u8_gs_start = 0; //Set Start flag off
+    
     //Set motors enable pins to off	
     MOTOR_off(ENB_PINS_MASK,PORT_A);
     LED_array_off(0xFF,PORT_B);//turn off all leds

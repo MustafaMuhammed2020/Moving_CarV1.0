@@ -2,7 +2,7 @@
  * motor.c
  *
  * Created: 4/6/2023 6:10:38 PM
- *  Author: Omar Taha
+ *  Author: Team 2
  */ 
 
 #include "motor.h"
@@ -10,7 +10,7 @@
 /***************************************************************************/
 /*This error is calculated for the 100 milliseconds T-Period !!            */
 /***************************************************************************/
-double d_g_err =0.042;//error in the delay times due to context switching.The error is 4.2% of the difference between the required On/Off Time and 50% of the T-Period.
+double d_g_err =0.042;//error in the delay times due to context switching.The error is 4.2% of the difference between the required On/Off Time and 50% of the T-Period (100 milliseconds).
 
 
 /************************************************************************/

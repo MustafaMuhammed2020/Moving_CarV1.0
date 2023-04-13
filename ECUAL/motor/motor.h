@@ -2,7 +2,7 @@
  * motor.h
  *
  * Created: 4/6/2023 6:10:51 PM
- *  Author: Omar Taha
+ *  Author: Team 2
  */ 
 
 
@@ -10,7 +10,7 @@
 #define MOTOR_H_
 #include "../../MCAL/dio/dio.h"
 #include "../../MCAL/timers/timers.h"
-#define f_g_tPeriod 100 
+#define f_g_tPeriod 100 //T-Period is 100 milliseconds
 
 /************************************************************************/
 /*Description: Initialize a motor pin as an output                      */

@@ -2,7 +2,7 @@
  * interrupts.h
  *
  * Created: 4/7/2023 12:23:35 AM
- *  Author: Omar Taha
+ *  Author: Team 2
  */ 
 
 

@@ -65,7 +65,7 @@ err_state TIMER0_initialValue(uint8_t value);
 /*                                       => PRESCALE_EXT_RISING_        */
 /*@param prescaler prescaler mode                                       */	
 /************************************************************************/
-err_state TIMER0_prescalerMode(unsigned int prescaler);
+err_state TIMER0_prescalerMode(unsigned int u16_a_prescaler);
 
 /************************************************************************/
 /*Description: Stays in a busy loop until the delay is met              */
@@ -111,7 +111,7 @@ err_state TIMER2_initialValue(uint8_t value);
 /*                                       => PRESCALE_EXT_RISING_        */
 /*@param prescaler prescaler mode                                       */	
 /************************************************************************/
-err_state TIMER2_perscalerMode(unsigned int prescaler);
+err_state TIMER2_prescalerMode(unsigned int u16_a_prescaler);
 
 /************************************************************************/
 /*Description: Stays in a busy loop until the delay is met              */
