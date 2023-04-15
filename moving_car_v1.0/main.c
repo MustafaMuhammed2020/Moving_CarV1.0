@@ -1,21 +1,21 @@
-
+/***************************************************************/
+/** Author  : Mustafa Mohammed Abdou                          **/
+/** Date    : 1 Octobre, 2021                                 **/
+/** Version : V01                                             **/
+/** Hint    : Application layer                               **/
+/***************************************************************/
 
 #include "APP/APP.h"
-
-#include "SERVICE/standard_types.h"
-
 
 int main(void)
 {
 	APP_init();
 	
-	APP_start();
-	
-    /* Replace with your application code */
     while (1) 
     {
 		
-		
+		APP_start();
+
     }
 }
 

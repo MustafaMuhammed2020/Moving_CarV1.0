@@ -8,7 +8,6 @@
 /** INCLUDE LIBRARIES **/
 #include "../SERVICE/common_macros.h"
 #include "../SERVICE/standard_types.h"
-
 #include <avr/interrupt.h>
 
 /** INCLUDE HAL DRIVERS **/
@@ -24,52 +23,95 @@
 /** INCLUDE DRIVER FILES **/
 #include "APP.h"
 
-static uint32_t u32_a_delayovs = 0 ;  /** VARIABLE TO HLD THE NUMBER OF NEEDED OVERFLOWS FOR SPECIFIC DELAY **/
+uint32_t u32_a_nuovs = 0 ;  /** COUNTER FOR NUMBER OF OVS **/
 
+uint32_t ticks = 0 ;
 
+uint32_t tick = 0 ;
 
 void APP_init(void)
 {
 	
+ 	MOTOR_init(MOTOR1_ID);  /** INIALIZE MOTOR 1 **/
+ 		
+	MOTOR_turnoff(MOTOR1_ID); /** MOTOR 1 IS OFF IN THE BEGINNING **/
+	
+	MOTOR_rotateclkdir(MOTOR1_ID); /** MOTOR 1 ROTATE CLOCKWISE **/
 	
 	TMR0_init();  /** INITIALIZE TIMER 0 **/
 	
 	TMR1_init();  /** INITIALIZE TIMER 1 **/
-	
-	MOTOR_init(MOTOR1_ID);  /** INIALIZE MOTOR 1 **/
-	
-	MOTOR_init(MOTOR2_ID);  /** INIALIZE MOTOR 1 **/
-	
-	MOTOR_turnoff(MOTOR1_ID); /** MOTOR 1 IS OFF IN THE BEGINNING **/
-	
-	MOTOR_turnoff(MOTOR2_ID); /** MOTOR 1 IS OFF IN THE BEGINNING **/
-	
-	MOTOR_rotateclkdir(MOTOR1_ID); /** MOTOR 1 ROTATE CLOCKWISE **/
-	
-	MOTOR_rotateclkdir(MOTOR2_ID); /** MOTOR 1 ROTATE CLOCKWISE **/
-	
+		
 }
-
 
 
 void APP_start(void)
 {
-   
-   
-   u32_a_delayovs = TMR1_getovs(3000);
+  tick = 0 ;
+  
+  ticks = TMR1_getovs(3000);
+  
+  TMR1_start();
+  while (tick < ticks )
+  {
+	  /*MOTOR_applyspeed(MOTOR1_ID , speed_mode_1);*/
+	  DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_HIGH);
+	  TMR0_delaymicos(64);
+	  
+	  DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_LOW);
+	  TMR0_delaymicos(64);
+
+  }
+  TMR1_stop();
+  
+  tick = 0 ;
+  
+  ticks = TMR1_getovs(1000);
+  
+  TMR1_start();
+  while (tick < ticks )
+  {
+	  
+	  MOTOR_turnoff(MOTOR1_ID);
+	  
+  }
+  TMR1_stop();
+  
+  tick = 0 ;
+  
+  ticks = TMR1_getovs(3000);
+  
+  TMR1_start();
+  while (tick < ticks )
+  {
+	  /*MOTOR_applyspeed(MOTOR2_ID , speed_mode_1);*/
+	  DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_HIGH);
+	  TMR0_delaymicos(192);
+	  
+	  DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_LOW);
+	  TMR0_delaymicos(448);
+
+  }
+  TMR1_stop();
+  
+  tick = 0 ;
+  
+  ticks = TMR1_getovs(1000);
+  
+  TMR1_start();
+  while (tick < ticks )
+  {
+	  
+	  MOTOR_turnoff(MOTOR1_ID);
+	  
+  }
+  TMR1_stop();
 	
-	TMR1_start();
-	
-	while (u32_a_delayovs)
-	{
-	   MOTOR_applyspeed(MOTOR1_ID , speed_mode_2); 
-	}
-		
-	TMR1_stop();
-		
 }
 
 ISR(TIMER1_OVF_vect)
 {
-	u32_a_delayovs-- ; 
+	//set_bit(SREG , 7);
+	
+	tick++ ;
 }

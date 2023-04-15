@@ -8,7 +8,7 @@
 #define TMR1_INTERFACE_H_
 
 
-#define  F_CPU 16000000  /** DEFINE CPU FREQUENCY **/
+/*#define  F_CPU 16000000  / ** DEFINE CPU FREQUENCY ** /*/
 
 
 /* CLOCK SOURCE */

@@ -142,8 +142,8 @@ MOTOR_init_status MOTOR_turnoff(uint8_t u8_a_motorid)
 	{
 		case MOTOR1_ID : /** SET PINS OF MOTOR 1 **/
 		
-		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_PIN1 , DIO_PIN_LOW); /** THE TWO PINS ARE HIGH **/
-		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_PIN2 , DIO_PIN_LOW);
+// 		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_PIN1 , DIO_PIN_LOW); /** THE TWO PINS ARE HIGH **/
+// 		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_PIN2 , DIO_PIN_LOW);
 		DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_LOW);
 		break;
 		
@@ -187,7 +187,7 @@ MOTOR_init_status MOTOR_applyspeed(uint8_t u8_a_motorid  , uint8_t u8_a_speed)
 		if (u8_a_speed == speed_mode_1) /** APPLY SPEED MODE 1 ON MOTOR 1 50 % DUTY CYCLE **/
 		{
 			DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_HIGH);
-			TMR0_delaymicos(576);
+			TMR0_delaymicos(64);
 			
 			DIO_setpinvalue(MOTOR1_PORT , MOTOR1_ENABLE_PIN , DIO_PIN_LOW);
 			TMR0_delaymicos(64);

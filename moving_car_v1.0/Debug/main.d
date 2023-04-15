@@ -1,5 +1,3 @@
-main.d main.o: .././main.c .././APP/APP.h .././SERVICE/standard_types.h
+main.d main.o: .././main.c .././APP/APP.h
 
 .././APP/APP.h:
-
-.././SERVICE/standard_types.h:
